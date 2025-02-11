@@ -1,0 +1,20 @@
+{:paths ["src" "resources"]
+ :deps {org.clojure/clojure {:mvn/version "1.12.0"}
+        org.clojure/core.match {:mvn/version "1.1.0"}
+        table/table {:git/url "https://github.com/danilomo/table" :git/sha "5a2800fb0e25ce72250f3684cb20beb3dbf180c2"}
+        org.clojure/tools.cli {:mvn/version "1.1.230"}}
+ :aliases
+ {:run-m {:main-opts ["-m" "danilomo.xtools"]}
+  :run-x {:ns-default danilomo.xtools
+          :exec-fn greet
+          :exec-args {:name "Clojure"}}
+  :ls   {:main-opts ["-m" "danilomo.ls"]}
+  :grep {:main-opts ["-m" "danilomo.grep"]}
+  :cal  {:main-opts ["-m" "danilomo.cal"]}
+  :build {:deps {io.github.clojure/tools.build
+                 {:mvn/version "0.10.5"}}
+          :ns-default build}
+  :test {:extra-paths ["test"]
+         :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}
+                      io.github.cognitect-labs/test-runner
+                      {:git/tag "v0.5.1" :git/sha "dfb30dd"}}}}}
